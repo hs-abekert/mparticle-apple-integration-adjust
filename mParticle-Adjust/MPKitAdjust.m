@@ -124,6 +124,20 @@ NSString *const MPKitAdjustErrorDomain = @"mParticle-Adjust";
     return execStatus;
 }
 
+- (MPKitExecStatus *)appWillOpenUrl:(NSURL *)deeplink {
+    [Adjust appWillOpenUrl:deeplink];
+
+    MPKitExecStatus *execStatus = [[MPKitExecStatus alloc] initWithSDKCode:@(MPKitInstanceAdjust) returnCode:MPKitReturnCodeSuccess];
+    return execStatus;
+}
+
+- (MPKitExecStatus *)gdprForgetMe {
+    [Adjust gdprForgetMe];
+
+    MPKitExecStatus *execStatus = [[MPKitExecStatus alloc] initWithSDKCode:@(MPKitInstanceAdjust) returnCode:MPKitReturnCodeSuccess];
+    return execStatus;
+}
+
 - (NSError *)errorWithMessage:(NSString *)message {
     NSError *error = [NSError errorWithDomain:MPKitAPIErrorDomain code:0 userInfo:@{MPKitAdjustErrorKey:message}];
     return error;
